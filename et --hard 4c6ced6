@@ -1,0 +1,8 @@
+[33mcf1b067[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m0590cac[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{1}: reset: moving to HEAD~
+[33m4c6ced6[m HEAD@{2}: commit: Update
+[33m0590cac[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{3}: commit: Added a new Controller
+[33mcf1b067[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{4}: commit: Added Expenses
+[33m0a48dcc[m HEAD@{5}: commit: Welcome Screen added
+[33mbbd476c[m HEAD@{6}: Branch: renamed refs/heads/master to refs/heads/main
+[33mbbd476c[m HEAD@{8}: commit (initial): Initial Commit
