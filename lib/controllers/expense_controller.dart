@@ -1,34 +1,32 @@
-import '/models/expenses.dart';
+import '../models/expenses.dart';
 
 class ExpenseController {
-  double balance = 0.0;
-  final List<Expense> expenses = [];
+  double currentBalance = 0.0;
+  double totalSpent = 0.0;
 
-  // Total spent combined from all expenses
-  double get totalSpent {
-    double sum = 0.0;
-    for (var item in expenses) {
-      sum += item.amount;
-    }
-    return sum;
-  }
+  double foodTotal = 0.0;
+  double transpoTotal = 0.0;
+  double utilitiesTotal = 0.0;
+  double personalTotal = 0.0;
 
-  // Add money to balance
   void addFunds(double amount) {
-    balance += amount;
+    currentBalance += amount;
   }
 
-  // Deduct from balance and log expense
   void addExpense(ExpensesCategory category, double amount) {
-    if (balance >= amount) {
-      balance -= amount;
-      expenses.add(
-        Expense(
-          id: DateTime.now().toString(),
-          category: category,
-          amount: amount,
-        ),
-      );
+    if (currentBalance >= amount) {
+      currentBalance -= amount;
+      totalSpent += amount;
+
+      if (category == ExpensesCategory.food) {
+        foodTotal += amount;
+      } else if (category == ExpensesCategory.transpo) {
+        transpoTotal += amount;
+      } else if (category == ExpensesCategory.util) {
+        utilitiesTotal += amount;
+      } else if (category == ExpensesCategory.personalUse) {
+        personalTotal += amount;
+      }
     }
   }
 }
