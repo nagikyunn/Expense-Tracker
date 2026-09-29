@@ -12,24 +12,56 @@ class WelcomeScreen extends StatelessWidget {
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 146, 7, 158),
         body: SafeArea(
-          child: SizedBox(
-            width: double.infinity, // Ensures Column takes full screen width
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start, // Keeps it near top
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, // Centers horizontally
-              children: const [
-                SizedBox(height: 100), // Distance from the top
-                Text(
-                  'Welcome To My Expenses Tracker',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Welcome To My Expenses Tracker',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  const SizedBox(height: 24),
+
+                  // Button with Home Icon and "Open Expenses" Text
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: const Color.fromARGB(255, 146, 7, 158),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 28,
+                        vertical: 14,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.home, size: 22),
+                    label: const Text(
+                      'Open Expenses',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
