@@ -1,52 +1,34 @@
-import 'package:expense_trackerproj/models/expenses.dart';
+import '/models/expenses.dart';
 
 class ExpenseController {
-  double _initialBalance = 1000.00;
+  double balance = 0.0;
+  final List<Expense> expenses = [];
 
-  final List<Expense> _expenses = [];
-
-  final List<String> categories = [
-    'Food',
-    'Transportation',
-    'Utilities',
-    'Personal Use',
-  ];
-
-  List<Expense> get expenses => _expenses;
-
-  double get initialBalance => _initialBalance;
-
-  double get totalBalance {
-    double totalSpent = 0.0;
-    for (var item in _expenses) {
-      totalSpent += item.amount;
+  // Total spent combined from all expenses
+  double get totalSpent {
+    double sum = 0.0;
+    for (var item in expenses) {
+      sum += item.amount;
     }
-    return _initialBalance - totalSpent;
+    return sum;
   }
 
-  void setInitialBalance(double amount) {
-    _initialBalance = amount;
-  }
-
+  // Add money to balance
   void addFunds(double amount) {
-    _initialBalance += amount;
+    balance += amount;
   }
 
-  void addExpense(Expense expense) {
-    _expenses.add(expense);
-  }
-
-  void deleteExpense(String id) {
-    _expenses.removeWhere((item) => item.id == id);
-  }
-
-  double getTotalByCategory(String category) {
-    double total = 0.0;
-    for (var item in _expenses) {
-      if (item.category == category) {
-        total += item.amount;
-      }
+  // Deduct from balance and log expense
+  void addExpense(ExpensesCategory category, double amount) {
+    if (balance >= amount) {
+      balance -= amount;
+      expenses.add(
+        Expense(
+          id: DateTime.now().toString(),
+          category: category,
+          amount: amount,
+        ),
+      );
     }
-    return total;
   }
 }
